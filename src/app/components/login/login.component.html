@@ -1,0 +1,43 @@
+<navbar></navbar>
+<div class="container light pt-3">
+  <h1><u>Signin</u></h1>
+  <div class="d-flex pb-5 pt-3 justify-content-center">
+    <form
+      class="py-5 px-3 bg-white"
+      [formGroup]="logForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="form-group mb-3">
+        <label class="form-label">Email</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="email"
+          [ngClass]="{ 'is-invalid': submitted && lg.email.errors }"
+        />
+        <div *ngIf="submitted && lg.email.errors" class="invalid-feedback">
+          <div *ngIf="lg.email.errors?.required">Email is required</div>
+          <div *ngIf="lg.email.errors?.email">Enter a valid email Address</div>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          formControlName="password"
+          [ngClass]="{ 'is-invalid': submitted && lg.password.errors }"
+        />
+        <div *ngIf="submitted && lg.password.errors" class="invalid-feedback">
+          <div *ngIf="lg.password.errors?.required">Password is required</div>
+        </div>
+      </div>
+
+      <div class="form-group pt-2">
+        <div class="d-grid col-sm-6 mx-auto">
+          <button class="btn btn-success">Login</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

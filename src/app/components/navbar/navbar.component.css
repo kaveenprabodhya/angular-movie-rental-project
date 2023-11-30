@@ -1,0 +1,19 @@
+.active-link {
+  color: black;
+  font-weight: 900;
+}
+
+.navbar-brand {
+  font-weight: bolder;
+  font-size: xx-large;
+  color: #2fb131;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  color: #2fb131 !important;
+}
+
+.light {
+  background-color: #eaeaea;
+}

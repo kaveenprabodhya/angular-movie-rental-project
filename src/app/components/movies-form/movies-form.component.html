@@ -1,0 +1,84 @@
+<navbar></navbar>
+<div class="container light pt-3">
+  <h1 class="pt-2" *ngIf="isAddMode">Create Movie</h1>
+  <h1 class="pt-2" *ngIf="!isAddMode">Edit Movie</h1>
+  <div>
+    <div class="d-flex pb-5 pt-3 justify-content-center">
+      <form
+        class="py-5 px-3 bg-white"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+      >
+        <div class="form-group mb-3">
+          <label class="form-label">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="title"
+            [ngClass]="{ 'is-invalid': submitted && mv.title.errors }"
+          />
+          <div *ngIf="submitted && mv.title.errors" class="invalid-feedback">
+            <div *ngIf="mv.title.errors?.required">Title is required</div>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label class="form-label">Genre</label>
+          <select
+            class="form-select"
+            formControlName="genre"
+            [ngClass]="{ 'is-invalid': submitted && mv.genre.errors }"
+          >
+            <option [ngValue]="null" disabled>Select Genre Type</option>
+            <option *ngFor="let genre of genres" [ngValue]="genre">
+              {{ genre.name }}
+            </option>
+          </select>
+          <div *ngIf="submitted && mv.title.errors" class="invalid-feedback">
+            <div *ngIf="mv.genre.errors?.required">Genre is required</div>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label class="form-label">Number in Stock</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="numberInStock"
+            [ngClass]="{ 'is-invalid': submitted && mv.numberInStock.errors }"
+          />
+          <div *ngIf="submitted && mv.title.errors" class="invalid-feedback">
+            <div *ngIf="mv.numberInStock.errors?.required">
+              Number in Stock is required
+            </div>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label class="form-label">Daily Rental Rate</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="dailyRentalRate"
+            [ngClass]="{ 'is-invalid': submitted && mv.dailyRentalRate.errors }"
+          />
+          <div *ngIf="submitted && mv.title.errors" class="invalid-feedback">
+            <div *ngIf="mv.dailyRentalRate.errors?.required">
+              Daily Rental Rate is required
+            </div>
+          </div>
+        </div>
+        <div class="form-group pt-3">
+          <div class="d-grid gap-2 col mx-auto">
+            <button class="btn btn-success">
+              <span
+                *ngIf="loading"
+                class="spinner-border spinner-border-sm"
+                role="status"
+                aria-hidden="true"
+              ></span>
+              Save
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

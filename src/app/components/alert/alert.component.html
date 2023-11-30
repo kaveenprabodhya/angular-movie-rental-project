@@ -1,0 +1,13 @@
+<div
+  *ngFor="let alert of alerts"
+  class="{{ cssClass(alert) }} popup"
+  role="alert"
+>
+  <span [innerHTML]="alert.message"></span>
+  <a
+    (click)="removeAlert(alert)"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></a>
+</div>

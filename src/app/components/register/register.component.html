@@ -1,0 +1,83 @@
+<navbar></navbar>
+<div class="container light pt-3">
+  <h1><u>Signup</u></h1>
+  <div class="d-flex pb-5 pt-3 justify-content-center">
+    <form
+      class="py-5 px-3 bg-white"
+      [formGroup]="regForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="form-group mb-3">
+        <label class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="name"
+          [ngClass]="{ 'is-invalid': submitted && rg.name.errors }"
+        />
+        <div *ngIf="submitted && rg.name.errors" class="invalid-feedback">
+          <div *ngIf="rg.name.errors?.required">Username is required</div>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label class="form-label">Email</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="email"
+          [ngClass]="{ 'is-invalid': submitted && rg.email.errors }"
+        />
+        <div *ngIf="submitted && rg.email.errors" class="invalid-feedback">
+          <div *ngIf="rg.email.errors?.required">Email Address is required</div>
+          <div *ngIf="rg.email.errors?.email">Enter a Valid Email Address.</div>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          formControlName="password"
+          [ngClass]="{ 'is-invalid': submitted && rg.password.errors }"
+        />
+        <div *ngIf="submitted && rg.password.errors" class="invalid-feedback">
+          <div *ngIf="rg.password.errors?.required">Password is required</div>
+          <div *ngIf="rg.password.errors?.invalidPassword">
+            Password should have minimum 8 characters, at least 1 uppercase
+            letter, 1 lowercase letter and 1 number.
+          </div>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label class="form-label">Confirm Password</label>
+        <input
+          type="password"
+          class="form-control"
+          formControlName="cpassword"
+          [ngClass]="{ 'is-invalid': submitted && rg.cpassword.errors }"
+        />
+        <div *ngIf="submitted && rg.cpassword.errors" class="invalid-feedback">
+          <div *ngIf="rg.cpassword.errors?.required">
+            Confirm Password is required
+          </div>
+          <div *ngIf="rg.cpassword.errors?.matching">
+            Password did not match!
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-2">
+        <div class="d-grid col-sm-6 mx-auto">
+          <button class="btn btn-success">
+            <span
+              *ngIf="loading"
+              class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+            ></span>
+            Register
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
